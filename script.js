@@ -285,7 +285,7 @@ function changeDataContract(dataPerson) {
 			console.log(stringRent);
 		}
 
-		makeStringFromNum(3111);
+		makeStringFromNum(550);
 
 		console.log(+rentYear.toFixed(2));
 		return +rentYear.toFixed(2);
