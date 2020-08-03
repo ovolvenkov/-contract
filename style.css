@@ -1,0 +1,61 @@
+.main-wrapper {
+	margin-left: 50px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+	margin-top: 30px;
+}
+
+.document-name {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.header {
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 20px;
+}
+
+input {
+	border: none;
+	margin:0;
+	padding: 0;
+	text-align: left;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: bold;
+}
+
+.rentText {
+	font-weight: normal;
+}
+
+input:hover{
+	background-color: yellow;
+}
+
+.tab{
+	margin-left: 50px;
+	font-weight:700;
+}
+
+
+
+.requisites {
+	display: flex;
+	justify-content: space-around;
+	margin-top: 20px;
+}
+
+.requisites-individual {
+	width: 500px;
+	margin-right: 20px;
+}
+
+.requisites-entity {
+	width: 500px;
+}
+
+p {
+	margin-top: 50px;
+}
