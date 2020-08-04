@@ -212,8 +212,8 @@ function changeDataContract(dataPerson) {
 
 
 	function changePaySum(costLand, dateCost) {
-		let numberWords_1 = ["одна", "дві", "три","чотири","п'ять","шість","сім","вісім","дев'ять","десять","одинадцять","дванадцять",
-		"тринадцять","чотирнадцять","п'ятнадцять","шістнадцяь","сімнадцять","вісімнадцть","дев'ятнадцять","двадцять"];
+		let numberWords_1 = ["одна", "дві", "три","чотири","п'ять","шість","сім","вісім","дев'ять"];
+		let numberWords_4 = ["десять","одинадцять","дванадцять","тринадцять","чотирнадцять","п'ятнадцять","шістнадцяь","сімнадцять","вісімнадцть","дев'ятнадцять","двадцять"];
 		let numberWords_2 = ["десять", "двадцять", "тридцять","сорок","п'ятдесят","шістдесят","сімдесят","вісімдесят","дев'яносто"];
 		let numberWords_3 = ["сто", "двісті", "триста","чотириста","п'ятсот","шістсот","сімсот","вісімcот","дев'ятсот"];
 		let thousand = ['тисяча','тисячі', 'тисяч'];
@@ -260,32 +260,45 @@ function changeDataContract(dataPerson) {
 			console.log(numArray);
 
 			if(numArray.length === 3){
-				numArray.forEach((item, index)=>{
+				numArray.forEach((item, index, arr)=>{
 					if (index === 0) stringRent += numberWords_3[+item - 1] + ' ';
-					else if (index === 1 && item != 0) stringRent += numberWords_2[+item - 1] + ' ';
-					else if (index === 2 && item != 0) stringRent += numberWords_1[+item - 1];
+					else if (index === 1 && item != 0 && item != 1) stringRent += numberWords_2[+item - 1] + ' ';
+					else if (index === 2 && item != 0 && arr[index - 1] != 1) stringRent += numberWords_1[+item - 1];
+					else if (index === 1 && item == 1) stringRent += numberWords_4[+arr[index + 1]];
 				})
 			} else if(numArray.length === 4){
-				numArray.forEach((item, index)=>{
+				numArray.forEach((item, index, arr)=>{
 					if (index === 0) {
 						stringRent += numberWords_1[+item - 1] + ' ';
-						if (+item === 1) stringRent += thousand[0];
-						else if (+item > 1 && +item <= 4) stringRent += thousand[1];
-						else if (+item > 4) stringRent += thousand[2];
+						if (+item === 1) stringRent += thousand[0] + ' ';
+						else if (+item > 1 && +item <= 4) stringRent += thousand[1] + ' ';
+						else if (+item > 4) stringRent += thousand[2] + ' ';
 					}
 					else if (index === 1 && item != 0) stringRent += numberWords_3[+item - 1] + ' ';
-					else if (index === 2 && item != 0) stringRent += numberWords_2[+item - 1] + ' ';
-					else if (index === 3 && item != 0) stringRent += numberWords_1[+item - 1];
+					else if (index === 2 && item != 0 && item != 1) stringRent += numberWords_2[+item - 1] + ' ';
+					else if (index === 3 && item != 0 && arr[index - 1] != 1) stringRent += numberWords_1[+item - 1];
+					else if (index === 2 && item == 1) stringRent += numberWords_4[+arr[index + 1]];
+				})
+			} else if (numArray.length === 5) {
+				numArray.forEach((item, index, arr)=>{
+					if (index === 0 && +item === 1 ) {
+						stringRent += numberWords_4[+arr[index + 1]] + ' ' + thousand[2] + ' ';
+					}
+					//else if(index === 0 && +item != 1) 
+					else if (index === 1 && item != 0) stringRent += numberWords_3[+item - 1] + ' ';
+					else if (index === 2 && item != 0 && item != 1) stringRent += numberWords_2[+item - 1] + ' ';
+					else if (index === 3 && item != 0 && arr[index - 1] != 1) stringRent += numberWords_1[+item - 1];
+					else if (index === 2 && item == 1) stringRent += numberWords_4[+arr[index + 1]];
 				})
 			}
 
 
 
-
+			console.log(number);
 			console.log(stringRent);
 		}
 
-		makeStringFromNum(550);
+		makeStringFromNum(185);
 
 		console.log(+rentYear.toFixed(2));
 		return +rentYear.toFixed(2);
